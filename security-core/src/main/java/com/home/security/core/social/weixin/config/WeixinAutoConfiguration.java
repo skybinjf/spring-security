@@ -15,7 +15,7 @@ import org.springframework.web.servlet.View;
 
 import com.home.security.core.properties.SecurityProperties;
 import com.home.security.core.properties.WeixinProperties;
-import com.home.security.core.social.view.ImoocConnectView;
+import com.home.security.core.social.view.HomeConnectView;
 
 /**
  * 微信登录配置
@@ -47,7 +47,7 @@ public class WeixinAutoConfiguration extends SocialAutoConfigurerAdapter {
 	@Bean({"connect/weixinConnect", "connect/weixinConnected"})
 	@ConditionalOnMissingBean(name = "weixinConnectedView")
 	public View weixinConnectedView() {
-		return new ImoocConnectView();
+		return new HomeConnectView();
 	}
 	
 }

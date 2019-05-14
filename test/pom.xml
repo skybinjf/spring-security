@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.imooc.test</groupId>
+	<groupId>com.home.test</groupId>
 	<artifactId>test</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
@@ -26,15 +26,15 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.imooc.security</groupId>
-			<artifactId>imooc-security-browser</artifactId>
+			<groupId>com.home.security</groupId>
+			<artifactId>security-browser</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.imooc.security</groupId>
-			<artifactId>imooc-security-authorize</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.home.security</groupId>-->
+			<!--<artifactId>security-authorize</artifactId>-->
+			<!--<version>1.0.0-SNAPSHOT</version>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>

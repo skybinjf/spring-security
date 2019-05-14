@@ -3,14 +3,12 @@
  */
 package com.home.security.browser.session;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-
+import com.home.security.core.properties.SecurityProperties;
 import org.springframework.security.web.session.SessionInformationExpiredEvent;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 
-import com.home.security.core.properties.SecurityProperties;
+import javax.servlet.ServletException;
+import java.io.IOException;
 
 /**
  * 并发登录导致session失效时，默认的处理策略
@@ -18,9 +16,9 @@ import com.home.security.core.properties.SecurityProperties;
  * @author zhailiang
  *
  */
-public class ImoocExpiredSessionStrategy extends AbstractSessionStrategy implements SessionInformationExpiredStrategy {
+public class HomeExpiredSessionStrategy extends AbstractSessionStrategy implements SessionInformationExpiredStrategy {
 
-	public ImoocExpiredSessionStrategy(SecurityProperties securityPropertie) {
+	public HomeExpiredSessionStrategy(SecurityProperties securityPropertie) {
 		super(securityPropertie);
 	}
 

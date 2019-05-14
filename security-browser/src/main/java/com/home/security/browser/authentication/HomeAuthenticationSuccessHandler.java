@@ -3,12 +3,10 @@
  */
 package com.home.security.browser.authentication;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.home.security.core.properties.LoginResponseType;
+import com.home.security.core.properties.SecurityProperties;
+import com.home.security.core.support.SimpleResponse;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,18 +17,18 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.home.security.core.properties.LoginResponseType;
-import com.home.security.core.properties.SecurityProperties;
-import com.home.security.core.support.SimpleResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * 浏览器环境下登录成功的处理器
  * 
  * @author zhailiang
  */
-@Component("imoocAuthenticationSuccessHandler")
-public class ImoocAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+@Component("homeAuthenticationSuccessHandler")
+public class HomeAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -46,7 +44,7 @@ public class ImoocAuthenticationSuccessHandler extends SavedRequestAwareAuthenti
 	 * (non-Javadoc)
 	 * 
 	 * @see org.springframework.security.web.authentication.
-	 * AuthenticationSuccessHandler#onAuthenticationSuccess(javax.servlet.http.
+	 * HomeAuthenticationSuccessHandler#onAuthenticationSuccess(javax.servlet.http.
 	 * HttpServletRequest, javax.servlet.http.HttpServletResponse,
 	 * org.springframework.security.core.Authentication)
 	 */
@@ -61,7 +59,7 @@ public class ImoocAuthenticationSuccessHandler extends SavedRequestAwareAuthenti
 			String type = authentication.getClass().getSimpleName();
 			response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(type)));
 		} else {
-			// 如果设置了imooc.security.browser.singInSuccessUrl，总是跳到设置的地址上
+			// 如果设置了home.security.browser.singInSuccessUrl，总是跳到设置的地址上
 			// 如果没设置，则尝试跳转到登录之前访问的地址上，如果登录前访问地址为空，则跳到网站根路径上
 			if (StringUtils.isNotBlank(securityProperties.getBrowser().getSingInSuccessUrl())) {
 				requestCache.removeRequest(request, response);

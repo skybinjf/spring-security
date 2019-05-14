@@ -11,7 +11,7 @@ import org.hibernate.boot.spi.MetadataBuildingContext;
  * @author zhailiang
  *
  */
-public class ImoocImplicitNamingStrategy extends ImplicitNamingStrategyJpaCompliantImpl {
+public class HomeImplicitNamingStrategy extends ImplicitNamingStrategyJpaCompliantImpl {
 
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class ImoocImplicitNamingStrategy extends ImplicitNamingStrategyJpaCompli
 	
 	@Override
 	protected Identifier toIdentifier(String stringForm, MetadataBuildingContext buildingContext) {
-		return super.toIdentifier("imooc_"+stringForm.toLowerCase(), buildingContext);
+		return super.toIdentifier("home_"+stringForm.toLowerCase(), buildingContext);
 	}
 
 }

@@ -48,7 +48,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 	private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 	
 	@Autowired
-	private SpringSocialConfigurer imoocSocialSecurityConfig;
+	private SpringSocialConfigurer homeSocialSecurityConfig;
 	
 	@Autowired
 	private SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
@@ -74,7 +74,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.apply(smsCodeAuthenticationSecurityConfig)
 				.and()
-			.apply(imoocSocialSecurityConfig)
+			.apply(homeSocialSecurityConfig)
 				.and()
 			//记住我配置，如果想在'记住我'登录时记录日志，可以注册一个InteractiveAuthenticationSuccessEvent事件的监听器
 			.rememberMe()

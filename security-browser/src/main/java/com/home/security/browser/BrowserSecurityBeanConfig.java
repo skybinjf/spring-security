@@ -11,9 +11,9 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import org.springframework.security.web.session.InvalidSessionStrategy;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 
-import com.home.security.browser.logout.ImoocLogoutSuccessHandler;
-import com.home.security.browser.session.ImoocExpiredSessionStrategy;
-import com.home.security.browser.session.ImoocInvalidSessionStrategy;
+import com.home.security.browser.logout.HomeLogoutSuccessHandler;
+import com.home.security.browser.session.HomeExpiredSessionStrategy;
+import com.home.security.browser.session.HomeInvalidSessionStrategy;
 import com.home.security.core.properties.SecurityProperties;
 
 /**
@@ -36,7 +36,7 @@ public class BrowserSecurityBeanConfig {
 	@Bean
 	@ConditionalOnMissingBean(InvalidSessionStrategy.class)
 	public InvalidSessionStrategy invalidSessionStrategy(){
-		return new ImoocInvalidSessionStrategy(securityProperties);
+		return new HomeInvalidSessionStrategy(securityProperties);
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class BrowserSecurityBeanConfig {
 	@Bean
 	@ConditionalOnMissingBean(SessionInformationExpiredStrategy.class)
 	public SessionInformationExpiredStrategy sessionInformationExpiredStrategy(){
-		return new ImoocExpiredSessionStrategy(securityProperties);
+		return new HomeExpiredSessionStrategy(securityProperties);
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class BrowserSecurityBeanConfig {
 	@Bean
 	@ConditionalOnMissingBean(LogoutSuccessHandler.class)
 	public LogoutSuccessHandler logoutSuccessHandler(){
-		return new ImoocLogoutSuccessHandler(securityProperties.getBrowser().getSignOutUrl());
+		return new HomeLogoutSuccessHandler(securityProperties.getBrowser().getSignOutUrl());
 	}
 	
 }

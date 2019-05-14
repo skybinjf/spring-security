@@ -19,17 +19,17 @@ import org.springframework.stereotype.Component;
 public class FormAuthenticationConfig {
 
 	@Autowired
-	protected AuthenticationSuccessHandler imoocAuthenticationSuccessHandler;
+	protected AuthenticationSuccessHandler homeAuthenticationSuccessHandler;
 	
 	@Autowired
-	protected AuthenticationFailureHandler imoocAuthenticationFailureHandler;
+	protected AuthenticationFailureHandler homeAuthenticationFailureHandler;
 	
 	public void configure(HttpSecurity http) throws Exception {
 		http.formLogin()
 			.loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
 			.loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
-			.successHandler(imoocAuthenticationSuccessHandler)
-			.failureHandler(imoocAuthenticationFailureHandler);
+			.successHandler(homeAuthenticationSuccessHandler)
+			.failureHandler(homeAuthenticationFailureHandler);
 	}
 	
 }

@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface RoleAdminRepository extends ImoocRepository<RoleAdmin> {
+public interface RoleAdminRepository extends HomeRepository<RoleAdmin> {
 
 }

@@ -1,9 +1,7 @@
 /**
  * 
  */
-package com.imooc;
-
-import javax.servlet.http.HttpServletRequest;
+package com.home;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author zhailiang

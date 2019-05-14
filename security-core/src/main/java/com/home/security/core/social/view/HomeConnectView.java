@@ -3,19 +3,18 @@
  */
 package com.home.security.core.social.view;
 
-import java.util.Map;
+import org.springframework.web.servlet.view.AbstractView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.servlet.view.AbstractView;
+import java.util.Map;
 
 /**
  * 绑定结果视图
  * @author zhailiang
  *
  */
-public class ImoocConnectView extends AbstractView {
+public class HomeConnectView extends AbstractView {
 
 	/*
 	 * (non-Javadoc)

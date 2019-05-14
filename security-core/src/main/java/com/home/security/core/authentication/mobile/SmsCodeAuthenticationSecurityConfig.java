@@ -28,10 +28,10 @@ import org.springframework.stereotype.Component;
 public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 	
 	@Autowired
-	private AuthenticationSuccessHandler imoocAuthenticationSuccessHandler;
+	private AuthenticationSuccessHandler homeAuthenticationSuccessHandler;
 	
 	@Autowired
-	private AuthenticationFailureHandler imoocAuthenticationFailureHandler;
+	private AuthenticationFailureHandler homeAuthenticationFailureHandler;
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -47,8 +47,8 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
 		
 		SmsCodeAuthenticationFilter smsCodeAuthenticationFilter = new SmsCodeAuthenticationFilter();
 		smsCodeAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
-		smsCodeAuthenticationFilter.setAuthenticationSuccessHandler(imoocAuthenticationSuccessHandler);
-		smsCodeAuthenticationFilter.setAuthenticationFailureHandler(imoocAuthenticationFailureHandler);
+		smsCodeAuthenticationFilter.setAuthenticationSuccessHandler(homeAuthenticationSuccessHandler);
+		smsCodeAuthenticationFilter.setAuthenticationFailureHandler(homeAuthenticationFailureHandler);
 		String key = UUID.randomUUID().toString();
 		smsCodeAuthenticationFilter.setRememberMeServices(new PersistentTokenBasedRememberMeServices(key, userDetailsService, persistentTokenRepository));
 		

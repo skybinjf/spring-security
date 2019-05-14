@@ -23,10 +23,10 @@ import org.springframework.stereotype.Component;
 public class OpenIdAuthenticationSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 	
 	@Autowired
-	private AuthenticationSuccessHandler imoocAuthenticationSuccessHandler;
+	private AuthenticationSuccessHandler homeAuthenticationSuccessHandler;
 	
 	@Autowired
-	private AuthenticationFailureHandler imoocAuthenticationFailureHandler;
+	private AuthenticationFailureHandler homeAuthenticationFailureHandler;
 	
 	@Autowired
 	private SocialUserDetailsService userDetailsService;
@@ -39,8 +39,8 @@ public class OpenIdAuthenticationSecurityConfig extends SecurityConfigurerAdapte
 		
 		OpenIdAuthenticationFilter OpenIdAuthenticationFilter = new OpenIdAuthenticationFilter();
 		OpenIdAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
-		OpenIdAuthenticationFilter.setAuthenticationSuccessHandler(imoocAuthenticationSuccessHandler);
-		OpenIdAuthenticationFilter.setAuthenticationFailureHandler(imoocAuthenticationFailureHandler);
+		OpenIdAuthenticationFilter.setAuthenticationSuccessHandler(homeAuthenticationSuccessHandler);
+		OpenIdAuthenticationFilter.setAuthenticationFailureHandler(homeAuthenticationFailureHandler);
 		
 		OpenIdAuthenticationProvider OpenIdAuthenticationProvider = new OpenIdAuthenticationProvider();
 		OpenIdAuthenticationProvider.setUserDetailsService(userDetailsService);

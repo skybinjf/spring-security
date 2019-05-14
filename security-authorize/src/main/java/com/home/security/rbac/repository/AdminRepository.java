@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface AdminRepository extends ImoocRepository<Admin> {
+public interface AdminRepository extends HomeRepository<Admin> {
 
 	Admin findByUsername(String username);
 

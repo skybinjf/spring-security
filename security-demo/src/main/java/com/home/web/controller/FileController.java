@@ -24,7 +24,7 @@ import java.util.Date;
 @RequestMapping("/file")
 public class FileController {
 
-	private String folder = "/Users/zhailiang/Documents/my/muke/inaction/java/workspace/github/homesecurity-demo/src/main/java/com/home/web/controller";
+	private String folder = "E:/workspace-idea/spring-security/security-demo/src/main/java/com/home/web/controller";
 
 	@PostMapping
 	public FileInfo upload(MultipartFile file) throws Exception {

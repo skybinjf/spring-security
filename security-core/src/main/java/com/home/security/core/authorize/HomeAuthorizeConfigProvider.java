@@ -21,7 +21,7 @@ import com.home.security.core.properties.SecurityProperties;
  */
 @Component
 @Order(Integer.MIN_VALUE)
-public class ImoocAuthorizeConfigProvider implements AuthorizeConfigProvider {
+public class HomeAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
 	@Autowired
 	private SecurityProperties securityProperties;

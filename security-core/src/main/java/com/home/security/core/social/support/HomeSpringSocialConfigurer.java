@@ -12,13 +12,13 @@ import org.springframework.social.security.SpringSocialConfigurer;
  * @author zhailiang
  *
  */
-public class ImoocSpringSocialConfigurer extends SpringSocialConfigurer {
+public class HomeSpringSocialConfigurer extends SpringSocialConfigurer {
 
 	private String filterProcessesUrl;
 
 	private SocialAuthenticationFilterPostProcessor socialAuthenticationFilterPostProcessor;
 
-	public ImoocSpringSocialConfigurer(String filterProcessesUrl) {
+	public HomeSpringSocialConfigurer(String filterProcessesUrl) {
 		this.filterProcessesUrl = filterProcessesUrl;
 	}
 

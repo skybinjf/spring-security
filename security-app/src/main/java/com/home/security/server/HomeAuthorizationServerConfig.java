@@ -3,9 +3,8 @@
  */
 package com.home.security.server;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.home.security.core.properties.OAuth2ClientProperties;
+import com.home.security.core.properties.SecurityProperties;
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +21,8 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
-import com.home.security.core.properties.OAuth2ClientProperties;
-import com.home.security.core.properties.SecurityProperties;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 认证服务器配置
@@ -33,7 +32,7 @@ import com.home.security.core.properties.SecurityProperties;
  */
 @Configuration
 @EnableAuthorizationServer
-public class ImoocAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class HomeAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;

@@ -25,7 +25,7 @@ import com.home.security.core.properties.SecurityProperties;
 public class TokenStoreConfig {
 	
 	/**
-	 * 使用redis存储token的配置，只有在imooc.security.oauth2.tokenStore配置为redis时生效
+	 * 使用redis存储token的配置，只有在home.security.oauth2.tokenStore配置为redis时生效
 	 * @author zhailiang
 	 *
 	 */

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface ResourceRepository extends ImoocRepository<Resource> {
+public interface ResourceRepository extends HomeRepository<Resource> {
 
 	Resource findByName(String name);
 

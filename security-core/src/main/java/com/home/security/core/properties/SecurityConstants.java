@@ -36,7 +36,7 @@ public interface SecurityConstants {
 	 * 
 	 * @see SecurityController
 	 */
-	String DEFAULT_SIGN_IN_PAGE_URL = "/homesignIn.html";
+	String DEFAULT_SIGN_IN_PAGE_URL = "/home-signIn.html";
 	/**
 	 * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
 	 */
@@ -60,7 +60,7 @@ public interface SecurityConstants {
 	/**
 	 * session失效默认的跳转地址
 	 */
-	String DEFAULT_SESSION_INVALID_URL = "/homesession-invalid.html";
+	String DEFAULT_SESSION_INVALID_URL = "/home-session-invalid.html";
 	/**
 	 * 获取第三方用户信息的url
 	 */

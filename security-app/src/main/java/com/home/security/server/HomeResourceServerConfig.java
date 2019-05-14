@@ -26,13 +26,13 @@ import com.home.security.core.validate.code.ValidateCodeSecurityConfig;
  */
 @Configuration
 @EnableResourceServer
-public class ImoocResourceServerConfig extends ResourceServerConfigurerAdapter {
+public class HomeResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	@Autowired
-	protected AuthenticationSuccessHandler imoocAuthenticationSuccessHandler;
+	protected AuthenticationSuccessHandler homeAuthenticationSuccessHandler;
 	
 	@Autowired
-	protected AuthenticationFailureHandler imoocAuthenticationFailureHandler;
+	protected AuthenticationFailureHandler homeAuthenticationFailureHandler;
 	
 	@Autowired
 	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
@@ -44,7 +44,7 @@ public class ImoocResourceServerConfig extends ResourceServerConfigurerAdapter {
 	private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 	
 	@Autowired
-	private SpringSocialConfigurer imoocSocialSecurityConfig;
+	private SpringSocialConfigurer homeSocialSecurityConfig;
 	
 	@Autowired
 	private AuthorizeConfigManager authorizeConfigManager;
@@ -61,7 +61,7 @@ public class ImoocResourceServerConfig extends ResourceServerConfigurerAdapter {
 				.and()
 			.apply(smsCodeAuthenticationSecurityConfig)
 				.and()
-			.apply(imoocSocialSecurityConfig)
+			.apply(homeSocialSecurityConfig)
 				.and()
 			.apply(openIdAuthenticationSecurityConfig)
 				.and()
