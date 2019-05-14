@@ -1,9 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.home.test</groupId>
-	<artifactId>test</artifactId>
+	<groupId>com.home.security</groupId>
+	<artifactId>security</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<security.version>1.0.0-SNAPSHOT</security.version>
+	</properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -24,19 +29,6 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.home.security</groupId>
-			<artifactId>security-browser</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>com.home.security</groupId>-->
-			<!--<artifactId>security-authorize</artifactId>-->
-			<!--<version>1.0.0-SNAPSHOT</version>-->
-		<!--</dependency>-->
-	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -51,4 +43,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<modules>
+		<module>../security-app</module>
+		<module>../security-browser</module>
+		<module>../security-core</module>
+		<module>../security-demo</module>
+		<module>../security-authorize</module>
+	</modules>
 </project>
