@@ -67,7 +67,7 @@ public class RoleServiceImpl implements RoleService {
 		if(CollectionUtils.isNotEmpty(role.getAdmins())){
 			throw new RuntimeException("不能删除有下挂用户的角色");
 		}
-		roleRepository.deleteById(id);
+		roleRepository.delete(id);
 	}
 
 	@Override

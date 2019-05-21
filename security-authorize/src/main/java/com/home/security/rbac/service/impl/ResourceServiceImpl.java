@@ -68,7 +68,7 @@ public class ResourceServiceImpl implements ResourceService {
 
 	@Override
 	public void delete(Long id) {
-		resourceRepository.deleteById(id);
+		resourceRepository.delete(id);
 	}
 	/* (non-Javadoc)
 	 * @see ResourceService#move(java.lang.Long, boolean)

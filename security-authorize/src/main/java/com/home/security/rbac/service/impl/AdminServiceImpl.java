@@ -93,7 +93,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public void delete(Long id) {
-		adminRepository.deleteById(id);
+		adminRepository.delete(id);
 	}
 
 	/* (non-Javadoc)
