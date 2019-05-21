@@ -4,12 +4,14 @@
 package com.home.security.core.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.annotation.Order;
 
 /**
  * @author zhailiang
  *
  */
 @ConfigurationProperties(prefix = "home.security")
+@Order(1)
 public class SecurityProperties {
 	
 	/**

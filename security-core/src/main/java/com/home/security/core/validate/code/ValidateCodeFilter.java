@@ -1,18 +1,7 @@
-/**
- * 
- */
 package com.home.security.core.validate.code;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.home.security.core.properties.SecurityConstants;
+import com.home.security.core.properties.SecurityProperties;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +11,14 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.home.security.core.properties.SecurityConstants;
-import com.home.security.core.properties.SecurityProperties;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 校验验证码的过滤器

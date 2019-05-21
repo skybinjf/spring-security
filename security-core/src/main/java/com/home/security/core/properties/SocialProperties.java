@@ -3,12 +3,18 @@
  */
 package com.home.security.core.properties;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 社交登录配置项
  * @author zhailiang
  *
  */
+@Component
 public class SocialProperties {
+
+	private String appId;
+	private String appSecret;
 	
 	/**
 	 * 社交登录功能拦截的url
@@ -42,5 +48,20 @@ public class SocialProperties {
 	public void setWeixin(WeixinProperties weixin) {
 		this.weixin = weixin;
 	}
-	
+
+	public String getAppId() {
+		return appId;
+	}
+
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
+
+	public String getAppSecret() {
+		return appSecret;
+	}
+
+	public void setAppSecret(String appSecret) {
+		this.appSecret = appSecret;
+	}
 }

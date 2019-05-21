@@ -3,8 +3,6 @@
  */
 package com.home.security.core.properties;
 
-import org.springframework.boot.autoconfigure.social.SocialProperties;
-
 /**
  * QQ登录配置项
  * 
@@ -26,5 +24,4 @@ public class QQProperties extends SocialProperties {
 	public void setProviderId(String providerId) {
 		this.providerId = providerId;
 	}
-	
 }

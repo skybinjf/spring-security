@@ -65,8 +65,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public AdminInfo update(AdminInfo adminInfo) {
-		
-		Admin admin = adminRepository.findOne(adminInfo.getId());
+		Admin admin = adminRepository.getOne(adminInfo.getId());
 		BeanUtils.copyProperties(adminInfo, admin);
 		
 		createRoleAdmin(adminInfo, admin);
@@ -81,7 +80,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	private void createRoleAdmin(AdminInfo adminInfo, Admin admin) {
 		if(CollectionUtils.isNotEmpty(admin.getRoles())){
-			roleAdminRepository.delete(admin.getRoles());
+			roleAdminRepository.deleteInBatch(admin.getRoles());
 		}
 		RoleAdmin roleAdmin = new RoleAdmin();
 		roleAdmin.setRole(roleRepository.getOne(adminInfo.getRoleId()));
@@ -94,7 +93,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public void delete(Long id) {
-		adminRepository.delete(id);
+		adminRepository.deleteById(id);
 	}
 
 	/* (non-Javadoc)
@@ -102,7 +101,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public AdminInfo getInfo(Long id) {
-		Admin admin = adminRepository.findOne(id);
+		Admin admin = adminRepository.getOne(id);
 		AdminInfo info = new AdminInfo();
 		BeanUtils.copyProperties(admin, info);
 		return info;

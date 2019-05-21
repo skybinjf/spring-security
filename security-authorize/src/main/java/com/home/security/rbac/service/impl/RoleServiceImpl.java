@@ -4,13 +4,13 @@
 package com.home.security.rbac.service.impl;
 
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.home.security.rbac.domain.Role;
 import com.home.security.rbac.domain.RoleResource;
 import com.home.security.rbac.dto.RoleInfo;
+import com.home.security.rbac.repository.ResourceRepository;
+import com.home.security.rbac.repository.RoleRepository;
+import com.home.security.rbac.repository.RoleResourceRepository;
+import com.home.security.rbac.repository.support.QueryResultConverter;
 import com.home.security.rbac.service.RoleService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -19,10 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.home.security.rbac.repository.ResourceRepository;
-import com.home.security.rbac.repository.RoleRepository;
-import com.home.security.rbac.repository.RoleResourceRepository;
-import com.home.security.rbac.repository.support.QueryResultConverter;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author zhailiang
@@ -57,46 +56,23 @@ public class RoleServiceImpl implements RoleService {
 	 */
 	@Override
 	public RoleInfo update(RoleInfo info) {
-		Role role = roleRepository.findOne(info.getId());
+		Role role = roleRepository.getOne(info.getId());
 		BeanUtils.copyProperties(info, role);
 		return info;
 	}
 
-	/**
-	 * (non-Javadoc)
-	 * @see com.idea.ams.service.RoleService#delete(java.lang.Long)
-	 */
 	@Override
 	public void delete(Long id) {
-		Role role = roleRepository.findOne(id);
+		Role role = roleRepository.getOne(id);
 		if(CollectionUtils.isNotEmpty(role.getAdmins())){
 			throw new RuntimeException("不能删除有下挂用户的角色");
 		}
-		roleRepository.delete(id);		
+		roleRepository.deleteById(id);
 	}
-//
-//	@Override
-//	public String[] getRoleMenus(Long id) {
-//		return StringUtils.split(roleRepository.findOne(id).getMenus(), ",");
-//	}
-//
-//	/**
-//	 * (non-Javadoc)
-//	 * @see com.idea.ams.service.RoleService#setRoleMenu(java.lang.Long, java.lang.String)
-//	 */
-//	@Override
-//	public void setRoleMenu(Long roleId, String menuIds) {
-//		Role role = roleRepository.findOne(roleId);
-//		role.setMenus(menuIds);
-//	}
 
-	/**
-	 * (non-Javadoc)
-	 * @see com.idea.ams.service.RoleService#getRoleInfo(java.lang.Long)
-	 */
 	@Override
 	public RoleInfo getInfo(Long id) {
-		Role role = roleRepository.findOne(id);
+		Role role = roleRepository.getOne(id);
 		RoleInfo info = new RoleInfo();
 		BeanUtils.copyProperties(role, info);
 		return info;
@@ -112,7 +88,7 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	public String[] getRoleResources(Long id) {
-		Role role = roleRepository.findOne(id);
+		Role role = roleRepository.getOne(id);
 		Set<String> resourceIds = new HashSet<>();
 		for (RoleResource resource : role.getResources()) {
 			resourceIds.add(resource.getResource().getId().toString());
@@ -120,15 +96,11 @@ public class RoleServiceImpl implements RoleService {
 		return resourceIds.toArray(new String[resourceIds.size()]);
 	}
 
-	/**
-	 * (non-Javadoc)
-	 * @see com.idea.ams.service.RoleService#setRoleMenu(java.lang.Long, java.lang.String)
-	 */
 	@Override
 	public void setRoleResources(Long roleId, String resourceIds) {
 		resourceIds = StringUtils.removeEnd(resourceIds, ",");
-		Role role = roleRepository.findOne(roleId);
-		roleResourceRepository.delete(role.getResources());
+		Role role = roleRepository.getOne(roleId);
+		roleResourceRepository.deleteInBatch(role.getResources());
 		String[] resourceIdArray = StringUtils.splitByWholeSeparatorPreserveAllTokens(resourceIds, ",");
 		for (String resourceId : resourceIdArray) {
 			RoleResource roleResource = new RoleResource();

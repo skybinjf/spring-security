@@ -3,8 +3,8 @@
  */
 package com.home.security.core.social;
 
-import javax.sql.DataSource;
-
+import com.home.security.core.properties.SecurityProperties;
+import com.home.security.core.social.support.HomeSpringSocialConfigurer;
 import com.home.security.core.social.support.SocialAuthenticationFilterPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,8 +19,7 @@ import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.social.security.SpringSocialConfigurer;
 
-import com.home.security.core.properties.SecurityProperties;
-import com.home.security.core.social.support.HomeSpringSocialConfigurer;
+import javax.sql.DataSource;
 
 /**
  * 社交登录配置主类
@@ -51,6 +50,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
 	public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
 		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource,
 				connectionFactoryLocator, Encryptors.noOpText());
+		// 指定表前缀，后缀是固定的，在JdbcUsersConnectionRepository所在位置
 		repository.setTablePrefix("home_");
 		if(connectionSignUp != null) {
 			repository.setConnectionSignUp(connectionSignUp);
